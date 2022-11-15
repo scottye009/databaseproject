@@ -1,0 +1,48 @@
+{% extends "layoutbook.html" %}
+{% block content %}
+<h1>Flight Status</h1>
+<div id="msg"style="color:rgb(182, 103, 0)">{{ msg }}</div>
+<p>Please Enter the Flight Info Below</p>
+    <div class="header">
+        <form class="form-group" action="{{ url_for('statusagent') }}" method="post">
+        
+            <label>Airline</label>
+            <input type="airline" name="airline" id='airline' class="search-field" placeholder="China Southern" size="16" required>
+            <label>Flight No.</label>
+            <input type="number" name="flight#" id="flight#" class="search-field" placeholder="6996" size="12" required></br>
+            <label>Date</label>
+            <input type="date" name="date" id="date" class="search-field" size="8"required>
+            <button type="submit" value="Submit" class="btn btn-success" >Search</button>
+        </form>
+    </div>
+
+    {% if flight %}
+    <table>
+        <thead>
+          <tr>
+              <th>Airline</th>
+              <th>Flight No.</th>
+              <th>Dep. Airport</th>
+              <th>Arr. Airport</th>
+              <th>Dep. Time</th>
+              <th>Arr. Time</th>
+              <th>Status</th>
+          </tr>
+          </thead>    
+          <tbody>
+           {% for row in flight %}    
+                  <tr>
+                      <td>{{row[0]}}</td>
+                      <td>{{row[1]}}</td>
+                      <td>{{row[2]}}</td>
+                      <td>{{row[3]}}</td>
+                      <td>{{row[4]}}</td>
+                      <td>{{row[5]}}</td>
+                      <td>{{row[6]}}</td>
+                  </tr>
+            {% endfor %}
+          </tbody>
+      </table></br>
+    {% endif %}
+
+{% endblock content %}

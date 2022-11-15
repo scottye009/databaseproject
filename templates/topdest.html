@@ -1,0 +1,21 @@
+{% extends 'layoutstaff.html' %}
+ 
+{% block title %}Top Destinations{% endblock %}
+ 
+{% block content %}
+
+<h1>Top Destinations</h1>
+
+<div>
+    <h3>Top 3 destinations from {{ start_date_3month }} to {{ end_date }}: </h3>
+    {% for line in month %}
+	    <h6>{{line.0}}</h6>
+	{% endfor %}
+
+    <h3>Top 3 destinations from {{ start_date_year }} to {{ end_date }}: </h3>
+    {% for line in year %}
+	    <h6>{{line.0}}</h6>
+	{% endfor %}
+    
+</div>
+{% endblock %}

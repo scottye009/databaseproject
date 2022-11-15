@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Flight Search</h1>
+<div id="msg"style="color:rgb(182, 103, 0)">{{ msg }}</div>
+<p>Please enter your source city and destination below</p>
+    <div class="header">
+        <form class="form-group" action="{{ url_for('search') }}" method="post">
+        
+            <label>From</label>
+            <input type="departure" name="departure" id='departure' class="search-field" placeholder="PVG/Shanghai" size="16" required>
+            <label>To</label>
+            <input type="arrival" name="arrival" id="arrival" class="search-field" placeholder="JFK/New York" size="16" required></br>
+            <label>Date</label>
+            <input type="date" name="date" id="date" class="search-field" size="8"required>
+            <button type="submit" value="Submit" class="btn btn-success" >Search</button>
+        </form>
+    </div>
+
+    {% if flight %}
+    <table>
+        <thead>
+          <tr>
+              <th>Airline</th>
+              <th>Flight No.</th>
+              <th>Dep. Airport</th>
+              <th>Arr. Airport</th>
+              <th>Dep. Time</th>
+              <th>Arr. Time</th>
+              <th>Price</th>
+              <th>Status</th>
+          </tr>
+          </thead>    
+          <tbody>
+           {% for row in flight %}    
+                  <tr>
+                      <td>{{row[0]}}</td>
+                      <td>{{row[1]}}</td>
+                      <td>{{row[2]}}</td>
+                      <td>{{row[3]}}</td>
+                      <td>{{row[4]}}</td>
+                      <td>{{row[5]}}</td>
+                      <td>{{row[6]}}</td>
+                      <td>{{row[7]}}</td>
+                  </tr>
+            {% endfor %}
+          </tbody>
+      </table></br>
+    {% endif %}
+
+<a href="/">Go back</a>
+
+{% endblock content %}

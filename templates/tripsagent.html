@@ -1,0 +1,67 @@
+{% extends "layoutbook.html" %}
+{% block content %}
+<h1>View my booking</h1>
+<div id="msg"style="color:rgb(182, 103, 0)">{{ msg }}</div>
+<p>Please enter a range of dates, your source city and destination below:</p>
+    <div class="header">
+        <form class="form-group" action="{{ url_for('tripsagent') }}" method="post">
+        
+            <label>From</label>
+            <input type="text" name="departure" id='departure' class="search-field" placeholder="PVG/Shanghai" size="16" required>
+            <label>To</label>
+            <input type="text" name="arrival" id="arrival" class="search-field" placeholder="JFK/New York" size="16" required></br>
+            <label>Purchase Date From</label>
+            <input type="date" name="start date" id="start date" class="search-field" size="8"required>
+            <label>To</label>
+            <input type="date" name="end date" id="end date" class="search-field" size="8"required>
+            <button type="submit" value="Submit" class="btn btn-success" >Search</button>
+        </form>
+    </div>
+
+    <div id="condition" style="color:rgb(30, 150, 30)">{{ condition }}</div>
+
+    {% if t %}
+    <style>
+ 
+        td {
+               width: 200px;
+               text-align: center;
+               border: 1px solid rgb(180, 180, 180);
+               padding: 4px;
+             }
+       </style>
+    <table>
+        <thead>
+          <tr>
+              <th>Airline</th>
+              <th>Flight No.</th>
+              <th>Dep. Airport</th>
+              <th>Arr. Airport</th>
+              <th>Dep. Time</th>
+              <th>Arr. Time</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Ticket ID</th>
+          </tr>
+          </thead>    
+          <tbody>
+           {% for row in t %}    
+                  <tr>
+                      <td>{{row[0]}}</td>
+                      <td>{{row[1]}}</td>
+                      <td>{{row[2]}}</td>
+                      <td>{{row[3]}}</td>
+                      <td>{{row[4]}}</td>
+                      <td>{{row[5]}}</td>
+                      <td>{{row[6]}}</td>
+                      <td>{{row[7]}}</td>
+                      <td>{{row[8]}}</td>
+                  </tr>
+            {% endfor %}
+          </tbody>
+      </table></br>
+    {% endif %}
+
+<a href="/agent">Go back</a>
+
+{% endblock content %}

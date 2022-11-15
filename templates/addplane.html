@@ -1,0 +1,66 @@
+{% extends 'layoutstaff.html' %}
+{% block content %}
+<h1 class="h1">Add Airplane</h1>
+<h1 class="h3">Current Airplanes</h1>
+<div id="msg" style="color:rgb(182, 103, 0)">{{ msg }}</div>
+<style>
+ 
+      td {
+             width: 200px;
+             text-align: center;
+             border: 1px solid rgb(180, 180, 180);
+             padding: 4px;
+           }
+     </style>
+    <table>
+      <thead>
+        <tr>
+            <th>Airline</th>
+            <th>Airplane ID</th>
+            <th>Seats</th>
+        </tr>
+        </thead>    
+        <tbody>
+         {% for row in data %}    
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table></br>
+
+<form action="{{ url_for('addplane') }}" method="post" autocomplete="off"> 
+
+      <div class="form-group">
+       <label for="airplane id" class="cols-sm-2 control-label">Airplane ID</label>
+       <div class="cols-sm-10">
+        <div class="input-group">
+         <span class="input-group-addon"><i class="fa fa-id-card" aria-hidden="true"></i></span>
+         <input type="number" class="form-control" name="airplane id" id="airplane id"  placeholder="Enter Airplane ID" required/>
+        </div>
+       </div>
+      </div>           
+      
+      <div class="form-group">
+       <label for="seats" class="cols-sm-2 control-label">Number of seats</label>
+       <div class="cols-sm-10">
+        <div class="input-group">
+         <span class="input-group-addon"><i class="fa fa-users" aria-hidden="true"></i></span>
+         <input type="number" class="form-control" name="seats" id="seats" placeholder="Enter the number of seats" required>
+        </div>
+       </div>
+      </div> 
+
+      
+ <div class="form-group "> 
+  <input type="submit" value="Add Airplane" class="form-control btn btn-primary " name="">
+  <p style="padding:5px;">
+ </div>
+  
+</form>
+
+
+
+{% endblock %}

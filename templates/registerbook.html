@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Register as a Booking Agent</h2>
+    {% if msg %}
+    <div class="alert alert-warning" role="alert">{{ msg }}</div>
+    {% endif %}
+
+     <form action="{{ url_for('bookreg') }}" method="post" autocomplete="off"> 
+            <div class="form-group">
+            <label for="email" class="cols-sm-2 control-label">Email Address</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="email" class="form-control" name="email" id="email"  placeholder="Enter your Email" required/>
+             </div>
+            </div>
+           </div>
+
+           <div class="form-group">
+            <label for="password" class="cols-sm-2 control-label">Password</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" required/>
+             </div>
+            </div>
+           </div>           
+           
+           <div class="form-group">
+            <label for="booking agent id" class="cols-sm-2 control-label">Booking Agent ID</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-id-card" aria-hidden="true"></i></span>
+              <input type="tel" class="form-control" name="booking agent id" id="booking agent id" placeholder="Enter the Booking Agent ID" required>
+             </div>
+            </div>
+           </div> 
+
+           
+
+      <div class="form-group ">
+        
+       <input type="submit" value="Register" class="form-control btn btn-primary " name="">
+       <p style="padding:5px;">
+      </div>
+       
+     </form>
+     <div class="border-top pt-3">
+        <small class="text-muted">
+            Already have an account? <a class="ml-2" href="{{ url_for('prelogin') }}">Log In</a>
+           
+        </small>
+    </div>
+
+     
+    {% endblock content %}
+

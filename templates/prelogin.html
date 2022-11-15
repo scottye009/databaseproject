@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Please Log In</h1>
+<h3>Choose Your Login Type</h3>
+    <form action="/customerlogin">
+        <input type="submit" value="Customer Login" class="btn btn-outline-success"/>
+    </form>
+    <form action="/booklogin">
+        <input type="submit" value="Booking Agent Login" class="btn btn-outline-success"/>
+    </form>
+    <form action="/stafflogin">
+        <input type="submit" class="btn btn-outline-success" value="Airline Staff Login" />
+    </form>
+
+{% endblock content %}

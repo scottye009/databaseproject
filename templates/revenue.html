@@ -1,0 +1,82 @@
+{% extends 'layoutstaff.html' %}
+
+{% block title %}Revenue Comparison{% endblock %}
+
+{% block content %}
+<h1 class="h1">Comparison of Revenue Earned</h1>
+
+
+    <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            var dps1 = [
+                            {% for key,value in num1.items() %}
+                                { y: {{value}}, label: "{{key}}" },
+                            {% endfor %}
+            ];
+
+            var chart1 = new CanvasJS.Chart("chartContainer1", {
+                title:{
+                    text: "Revenue in the Last Month"              
+                },
+                axisY: {
+                        title: "#Ticket Bought"
+
+                },
+             
+
+                data: [              
+                {
+                    // Change type to "doughnut", "line", "splineArea", etc.
+                    type: "doughnut",
+                    
+                    dataPoints: dps1
+                }
+                ]
+            });
+            
+   
+                var dps2 = [
+                            {% for key,value in num2.items() %}
+                                {y: {{value}}, label: "{{key}}"},
+                            {% endfor %}
+                ];
+    
+                var chart2 = new CanvasJS.Chart("chartContainer2", {
+                    title:{
+                        text: "Revenue in the Last Year"              
+                    },
+                    axisY: {
+                            title: "Amount of Commission"
+    
+                        },
+                    data: [              
+                    {
+                        // Change type to "doughnut", "line", "splineArea", etc.
+                        type: "doughnut",
+                        showInLegend: false, 
+                        dataPoints: dps2
+                    }
+                    ]
+                });
+                
+                chart1.render();
+                chart2.render();
+            }
+            
+        </script>
+        <style type="text/css">
+        </style>
+        
+    </head>
+    <body>
+     
+    
+            <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+            <div id="chartContainer1" style="width: 100%; height: 300px;display: inline-block;"></div> <br/>
+            <div id="chartContainer2" style="width: 100%; height: 300px;display: inline-block;"></div>
+        
+{% endblock %}

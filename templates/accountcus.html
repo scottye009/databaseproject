@@ -1,0 +1,70 @@
+{% extends 'layoutcus.html' %}
+
+{% block title %}My Account{% endblock %}
+
+{% block content %}
+<h1 class="h1">Track My Spending</h1>
+
+
+<div id="msg"style="color:rgb(182, 103, 0)">{{ msg }}</div>
+<h1 class="h4">Please enter a range of dates (maximum 12 months)</h1>
+    <div class="header">
+        <form class="form-group" action="{{ url_for('accountcus') }}" method="post">
+            <label>Purchase Date From</label>
+            <input type="date" name="start date" id="start date" class="search-field" size="8"required>
+            <label>To</label>
+            <input type="date" name="end date" id="end date" class="search-field" size="8"required>
+            <button type="submit" value="Submit" class="btn btn-success" >Search</button>
+
+        </form>
+    </div>
+   
+  
+    {% if result %}
+    <h1 class="h4">Data range: {{ ran }}</h1>
+    <h1 class="h5">Total: {{ tot }}</h1>
+
+    {% endif %}
+
+
+
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            var dps = [
+                        {% for key,value in num.items() %}
+                            {  y: {{value}}, label: {{key}} },
+                        {% endfor %}
+            ];
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                title:{
+                    text: "Month Wise Money Spent"              
+                },
+                axisY: {
+                        title: "Money Spent"
+
+                    },
+                data: [              
+                {
+                    // Change type to "doughnut", "line", "splineArea", etc.
+                    type: "column",
+                    showInLegend: false, 
+                    dataPoints: dps
+                }
+                ]
+            });
+            chart.render();
+        }
+    </script>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+{% endblock %}

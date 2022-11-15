@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Booking Agent Login</h1>
+{% if msg %}
+<div class="alert alert-warning" role="alert">{{ msg }}</div>
+{% endif %}
+<p>Please enter your email and password</p>
+   <form class="form-group" action="{{ url_for('booklogin') }}" method="post">
+    <label>Email Address</label>
+    <input type="email" class="form-control" name="email" placeholder="Email" id="email" required>
+    <label>Password</label>
+    <input type="password" class="form-control" name="password" placeholder="Password" id="password" required></br>
+    
+    <input type="submit" value="Login" class="form-control btn btn-success " name="">
+   </form>
+  
+  
+   <div class="border-top pt-3">
+      <small class="text-muted">
+          Need An Account? <a class="ml-2" href="{{ url_for('preregister') }}">Register Now</a>
+      </small>
+  </div>
+   
+   
+   {% endblock content %}

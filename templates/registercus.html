@@ -1,0 +1,149 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Register as a Customer</h2>
+    {% if msg %}
+    <div class="alert alert-warning" role="alert">{{ msg }}</div>
+    {% endif %}
+     <form action="{{ url_for('customerreg') }}" method="post" autocomplete="off"> 
+            <div class="form-group">
+            <label for="email" class="cols-sm-2 control-label">Email Address</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="email" class="form-control" name="email" id="email"  placeholder="Enter your Email" required/>
+             </div>
+            </div>
+           </div>
+
+           <div class="form-group">
+            <label for="name" class="cols-sm-2 control-label">Your Name</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" required/>
+             </div>
+            </div>
+           </div>
+
+           <div class="form-group">
+            <label for="password" class="cols-sm-2 control-label">Password</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" required/>
+             </div>
+            </div>
+           </div>           
+           
+           <div class="form-group">
+            <label for="building number" class="cols-sm-2 control-label">Building Number</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-building" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="building number" id="building number"  placeholder="Enter your Building Number" required/>
+             </div>
+            </div>
+           </div>           
+           
+           <div class="form-group">
+            <label for="street" class="cols-sm-2 control-label">Street</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-road" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="street" id="street"  placeholder="Enter your Street" required/>
+             </div>
+            </div>
+           </div>           
+           
+           <div class="form-group">
+            <label for="city" class="cols-sm-2 control-label">City</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-map" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="city" id="city"  placeholder="Enter your City" required/>
+             </div>
+            </div>
+           </div>           
+           
+           <div class="form-group">
+            <label for="state" class="cols-sm-2 control-label">State</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-globe" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="state" id="state"  placeholder="Enter your State" required/>
+             </div>
+            </div>
+           </div>
+          
+ 
+           <div class="form-group">
+            <label for="phone number" class="cols-sm-2 control-label">Phone Number</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+              <input type="tel" class="form-control" name="phone number" id="phone number" placeholder="Enter your Phone Number" required>
+             </div>
+            </div>
+           </div> 
+           
+           <div class="form-group">
+            <label for="passport number" class="cols-sm-2 control-label">Passport Number</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-plane" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="passport number" id="passport number" placeholder="Enter your Passport Number" required>
+             </div>
+            </div>
+           </div> 
+           
+           <div class="form-group">
+            <label for="passport expiration" class="cols-sm-2 control-label">Passport Expiration</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+              <input type="date" class="form-control" name="passport expiration" id="passport expiration" placeholder="Enter your Passport Expiration" required>
+             </div>
+            </div>
+           </div>
+           
+           <div class="form-group">
+            <label for="passport country" class="cols-sm-2 control-label">Passport Country</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="passport country" id="passport country" placeholder="Enter your Passport Country" required>
+             </div>
+            </div>
+           </div>
+           
+           <div class="form-group">
+            <label for="date of birth" class="cols-sm-2 control-label">Date of Birth</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-birthday-cake" aria-hidden="true"></i></span>
+              <input type="date" class="form-control" name="date of birth" id="date of birth" placeholder="Enter your Birthday" required>
+             </div>
+            </div>
+           </div>
+           
+
+
+    
+
+
+      <div class="form-group ">
+        
+       <input type="submit" value="Register" class="form-control btn btn-primary " name="">
+       <p style="padding:5px;">
+      </div>
+       
+     </form>
+     <div class="border-top pt-3">
+        <small class="text-muted">
+            Already have an account? <a class="ml-2" href="{{ url_for('prelogin') }}">Log In</a>
+           
+        </small>
+    </div>
+
+    {% endblock content %}
+

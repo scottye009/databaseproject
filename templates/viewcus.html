@@ -1,0 +1,51 @@
+{% extends 'layoutstaff.html' %}
+ 
+{% block title %}Frequent Customers{% endblock %}
+ 
+{% block content %}
+<div id="msg1" style="color:rgb(30, 150, 30)">{{ msg1 }}</div>
+
+<div>
+    {% if customer %}
+        <table>
+            <thead>
+                <tr>
+                    <h3>The most frequent customer in the last year is: </h3>
+                    <th>Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>    
+                <tbody>
+                        <tr>
+                            <td>{{customer[0]}}</td>
+                            <td>{{customer[1]}}</td>
+                        </tr>
+                </tbody>
+        </table>
+    {% endif %}
+    
+    <div id="msg2" style="color:rgb(30, 150, 30)">{{ msg2 }}</div>
+
+    {% if lst %}
+        <table>
+            <thead>
+                <tr>
+                    <h3>All the {{airline_name}} flights your customers have taken:</h3>
+                    <th>Email</th>
+                    <th>Flight No.</th>
+                </tr>
+            </thead>    
+                <tbody>
+                    {% for line in lst %}
+                        <tr>
+                            <td>{{line[0]}}</td>
+                            <td>{{line[1]}}</td>
+                    {% endfor %}
+                        </tr>
+                </tbody>
+        </table>
+    {% endif %}
+    
+	
+</div>
+{% endblock %}

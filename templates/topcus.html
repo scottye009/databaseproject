@@ -1,0 +1,97 @@
+{% extends 'layoutbook.html' %}
+
+{% block title %}Top Customers{% endblock %}
+
+{% block content %}
+<h1 class="h1">View Top Customers</h1>
+
+   
+  
+    {% if result1 %}
+
+    <h1 class="h4">Top 5 customers based on number of tickets bought from the booking agent in the past 6 months:</h1>
+    {% for a in result1 %}
+    <h1 class="h6">{{ a }}</h1>
+    {% endfor %}
+    <h1 class="h4">Top 5 customers based on the amount of commission received in the last year:</h1>
+    {% for a in result2 %}
+    <h1 class="h6">{{ a }}</h1>
+    {% endfor %}
+    {% endif %}
+
+
+    <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            var dps1 = [
+                            {% for key,value in num1.items() %}
+                                { y: {{value}}, label: "{{key}}" },
+                            {% endfor %}
+            ];
+
+            var chart1 = new CanvasJS.Chart("chartContainer1", {
+                title:{
+                    text: "Top 5 Customers Based on #Ticket in Past 6 Months"              
+                },
+                axisY: {
+                        title: "#Ticket Bought"
+
+                },
+      
+
+                data: [              
+                {
+                    // Change type to "doughnut", "line", "splineArea", etc.
+                    type: "column",
+                    
+                    dataPoints: dps1
+                }
+                ]
+            });
+            
+   
+                var dps2 = [
+                            {% for key,value in num2.items() %}
+                                {y: {{value}}, label: "{{key}}"},
+                            {% endfor %}
+                ];
+    
+                var chart2 = new CanvasJS.Chart("chartContainer2", {
+                    title:{
+                        text: "Top 5 Customers Based on Commission Last Year"              
+                    },
+                    axisY: {
+                            title: "Amount of Commission"
+    
+                    },
+               
+                    data: [              
+                    {
+                        // Change type to "doughnut", "line", "splineArea", etc.
+                        type: "column",
+                        showInLegend: false, 
+                        dataPoints: dps2
+                    }
+                    ]
+                });
+                
+                chart1.render();
+                chart2.render();
+            }
+            
+        </script>
+        <style type="text/css">
+        </style>
+        
+    </head>
+    <body>
+     
+    
+            <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+            <div id="chartContainer1" style="width: 100%; height: 300px;display: inline-block;"></div> <br/>
+            <div id="chartContainer2" style="width: 100%; height: 300px;display: inline-block;"></div>
+        
+{% endblock %}

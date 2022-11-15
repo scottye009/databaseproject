@@ -1,0 +1,72 @@
+{% extends "layoutcus.html" %}
+{% block content %}
+<h1>Book</h1>
+<div id="msg"style="color:rgb(182, 103, 0)">{{ msg }}</div>
+<h1 class="h3">Please enter your source city and destination</h1>
+    <div class="header">
+        <form class="form-group" action="{{ url_for('bookcus') }}" method="post">
+        
+            <label>From</label>
+            <input type="departure" name="departure" id='departure' class="search-field" placeholder="PVG/Shanghai" size="16" required>
+            <label>To</label>
+            <input type="arrival" name="arrival" id="arrival" class="search-field" placeholder="JFK/New York" size="16" required></br>
+            <label>Date</label>
+            <input type="date" name="date" id="date" class="search-field" size="8"required>
+            <button type="submit" value="Submit" class="btn btn-success" >Search</button>
+        </form>
+    </div>
+
+    {% if flight %}
+    <style>
+ 
+        td {
+               width: 200px;
+               text-align: center;
+               border: 1px solid rgb(180, 180, 180);
+               padding: 4px;
+             }
+       </style>
+    <table>
+        <thead>
+          <tr>
+              <th>Airline</th>
+              <th>Flight No.</th>
+              <th>Dep. Airport</th>
+              <th>Arr. Airport</th>
+              <th>Dep. Time</th>
+              <th>Arr. Time</th>
+              <th>Price</th>
+              <th>Remaining Seats</th>
+          </tr>
+          </thead>    
+          <tbody>
+           {% for row in flight %}    
+                  <tr>
+                      <td>{{row[0]}}</td>
+                      <td>{{row[1]}}</td>
+                      <td>{{row[2]}}</td>
+                      <td>{{row[3]}}</td>
+                      <td>{{row[4]}}</td>
+                      <td>{{row[5]}}</td>
+                      <td>{{row[6]}}</td>
+                      <td>{{row[7]}}</td>
+                  </tr>
+            {% endfor %}
+          </tbody>
+      </table></br>
+    
+      
+    <h1 class="h3">Please enter the information below to confirm your choice</h1>
+    <form class="form-group" action="{{ url_for('bookcusconfirm') }}" method="post">
+        
+        <label>Airline</label>
+        <input type="airline" name="airline" id='airline' class="search-field" placeholder="United Airlines" size="16" required>
+        <label>Flight No.</label>
+        <input type="number" name="flight_num" id="flight_num" class="search-field" placeholder="88" size="16" required>
+
+        <button type="submit" value="Submit" class="btn btn-success" >Confirm</button>
+    </form>
+    
+    {% endif %}
+
+{% endblock content %}

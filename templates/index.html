@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  
+
+<h1>Home Page</h1>
+
+<i class="fa fa-thermometer-half fa-2x" aria-hidden="true">Weather</i>
+	<nav class="row" style="color: white;">
+		
+	  <h3 class="col-md-3 text-center"></h3>
+	</nav>
+	<div id="msg" style="color:rgb(182, 103, 0)">{{ msg }}</div>
+
+	<center class="row">
+	  <form method="post" class="col-md-7 col-md-offset-4">
+		<div class="input-group">
+		  <input type="text" class="form-control" name="city" placeholder="Change City" required>
+		  <div class="input-group-btn">
+			<input type="submit" value="Go" class="form-control btn btn-success " name="">
+		  </div>
+		  <form>
+		  
+	</center>
+</br>
+	<div class="row">
+	  {% if data.country_code and data.coordinate and data.temp and data.pressure and data.humidity %}
+	  <div class="col-md-10 col-md-offset-3">
+
+		<i class= "{{ data.icon }}" style='font-size:100px'></i>
+		<h5>City : {{data.cityname}}</h5>
+		<h5>Country : {{data.country_code}}</h5>
+		  <h5>Weather : {{data.weather}}</h5>
+		  <h5>Temperature : {{data.temp}}</h5>
+		  <h5>Wind Level : {{data.wind}}</h5>
+		  <h5>Pressure : {{data.pressure}} </h5>
+		  <h5>Humidity : {{data.humidity}}</h5>
+	  </div>
+	  {% endif %}
+	</div>
+
+
+
+{% endblock content %}

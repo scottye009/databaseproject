@@ -1,0 +1,15 @@
+{% extends 'layoutstaff.html' %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-4">Welcome back, {{ name }}!</h1>
+    <p class="lead">This is the place where you can manage the flights and view the reports!</p>
+    <hr class="my-4">
+    <p>See your upcoming flights.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/staff/trips" role="button">View My Trips</a>
+    </p>
+  </div>
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends 'layoutstaff.html' %}
+{% block content %}
+<h1 class="h1">Create Flights</h1>
+<h1 class="h3">Flights in the Next 30 Days</h1>
+<div id="msg" style="color:rgb(182, 103, 0)">{{ msg }}</div>
+<style>
+ 
+  td {
+         width: 200px;
+         text-align: center;
+         border: 1px solid rgb(180, 180, 180);
+         padding: 4px;
+       }
+ </style>
+<table>
+  <thead>
+    <tr>
+        <th>Airline</th>
+        <th>Flight No.</th>
+        <th>Dep. Airport</th>
+        <th>Dep. Time</th>
+        <th>Arr. Airport</th>
+        <th>Arr. Time</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Airplane ID</th>
+    </tr>
+    </thead>    
+    <tbody>
+     {% for row in data %}    
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+                <td>{{row[5]}}</td>
+                <td>{{row[6]}}</td>
+                <td>{{row[7]}}</td>
+                <td>{{row[8]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table></br>
+
+<form action="{{ url_for('createflights') }}" method="post" autocomplete="off"> 
+    
+
+      <div class="form-group">
+        <label for="flight num" class="cols-sm-2 control-label">Flight No.</label>
+        <div class="cols-sm-10">
+         <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-id-card" aria-hidden="true"></i></span>
+          <input type="number" class="form-control" name="flight num" id="flight num"  placeholder="Enter Flight No." required/>
+         </div>
+        </div>
+       </div>          
+
+       <div class="form-group">
+        <label for="departure airport" class="cols-sm-2 control-label">Departure Airport</label>
+        <div class="cols-sm-10">
+         <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+          <input type="text" class="form-control" name="departure airport" id="departure airport"  placeholder="Enter Departure Airport" required/>
+         </div>
+        </div>
+       </div>          
+
+       <div class="form-group">
+        <label for="departure time" class="cols-sm-2 control-label">Departure Time</label>
+        <div class="cols-sm-10">
+         <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-clock" aria-hidden="true"></i></span>
+          <input type="datetime-local" class="form-control" name="departure time" id="departure time"  placeholder="Enter Departure Time" required/>
+         </div>
+        </div>
+       </div>     
+       
+       <div class="form-group">
+        <label for="arrival airport" class="cols-sm-2 control-label">Arrival Airport</label>
+        <div class="cols-sm-10">
+         <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+          <input type="text" class="form-control" name="arrival airport" id="arrival airport"  placeholder="Enter Arrival Airport" required/>
+         </div>
+        </div>
+       </div>          
+
+       <div class="form-group">
+        <label for="arrival time" class="cols-sm-2 control-label">Arrival Time</label>
+        <div class="cols-sm-10">
+         <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-clock" aria-hidden="true"></i></span>
+          <input type="datetime-local" class="form-control" name="arrival time" id="arrival time"  placeholder="Enter Arrival Time" required/>
+         </div>
+        </div>
+       </div>
+
+       <div class="form-group">
+        <label for="price" class="cols-sm-2 control-label">Price</label>
+        <div class="cols-sm-10">
+         <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-credit-card" aria-hidden="true"></i></span>
+          <input type="number" class="form-control" name="price" id="price"  placeholder="Enter Price" required/>
+         </div>
+        </div>
+       </div>          
+       
+      
+      <div class="form-group">
+       <label for="status" class="cols-sm-2 control-label">Status</label>
+       <div class="cols-sm-10">
+        <div class="input-group">
+         <span class="input-group-addon"><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
+         <input type="text" class="form-control" name="status" id="status" placeholder="UPCOMING/IN PROGRESS/DELAYED/COMPLETED" required>
+        </div>
+       </div>
+      </div> 
+
+      <div class="form-group">
+        <label for="airplane id" class="cols-sm-2 control-label">Airplane ID</label>
+        <div class="cols-sm-10">
+         <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-id-card" aria-hidden="true"></i></span>
+          <input type="number" class="form-control" name="airplane id" id="airplane id"  placeholder="Enter Airplane ID" required/>
+         </div>
+        </div>
+       </div>            
+
+      
+ <div class="form-group "> 
+  <input type="submit" value="Add Flight" class="form-control btn btn-primary " name="">
+  <p style="padding:5px;">
+ </div>
+  
+</form>
+
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Registering</h1>
+<h3>Choose Your Identity</h3>
+    <form action="/customerreg">
+        <input type="submit" value="Customer" class="btn btn-outline-success"/>
+    </form>
+    <form action="/bookreg">
+        <input type="submit" value="Booking Agent" class="btn btn-outline-success"/>
+    </form>
+    <form action="/staffreg">
+        <input type="submit" value="Airline Staff" class="btn btn-outline-success"/>
+    </form>
+
+{% endblock content %}

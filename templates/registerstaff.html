@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Register as an Airline Staff</h2>
+    {% if msg %}
+    <div class="alert alert-warning" role="alert">{{ msg }}</div>
+    {% endif %}
+     <form action="{{ url_for('staffreg') }}" method="post" autocomplete="off"> 
+            <div class="form-group">
+            <label for="email" class="cols-sm-2 control-label">Email Address</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="email" class="form-control" name="email" id="email"  placeholder="Enter your Email" required/>
+             </div>
+            </div>
+           </div>
+
+        
+           <div class="form-group">
+            <label for="password" class="cols-sm-2 control-label">Password</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" required/>
+             </div>
+            </div>
+           </div>          
+           
+           <div class="form-group">
+            <label for="first name" class="cols-sm-2 control-label">First Name</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="first name" id="first name"  placeholder="Enter your First Name" required/>
+             </div>
+            </div>
+           </div>
+           
+           <div class="form-group">
+            <label for="last name" class="cols-sm-2 control-label">Last Name</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="last name" id="last name"  placeholder="Enter your Last Name" required/>
+             </div>
+            </div>
+           </div>
+
+           <div class="form-group">
+            <label for="date of birth" class="cols-sm-2 control-label">Date of Birth</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-birthday-cake" aria-hidden="true"></i></span>
+              <input type="date" class="form-control" name="date of birth" id="date of birth" placeholder="Enter your Birthday" required>
+             </div>
+            </div>
+           </div>
+           
+           <div class="form-group">
+            <label for="airline name" class="cols-sm-2 control-label">Airline Name</label>
+            <div class="cols-sm-10">
+             <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-plane" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="airline name" id="airline name"  placeholder="Enter the Name of the Airline You Belong to" required/>
+             </div>
+            </div>
+           </div>
+
+
+
+
+      <div class="form-group ">
+        
+       <input type="submit" value="Register" class="form-control btn btn-primary " name="">
+       <p style="padding:5px;">
+      </div>
+       
+     </form>
+     <div class="border-top pt-3">
+        <small class="text-muted">
+            Already have an account? <a class="ml-2" href="{{ url_for('prelogin') }}">Log In</a>
+           
+        </small>
+    </div>
+
+    {% endblock content %}
+

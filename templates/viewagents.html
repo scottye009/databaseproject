@@ -1,0 +1,31 @@
+{% extends 'layoutstaff.html' %}
+ 
+{% block title %}Booking Agents{% endblock %}
+ 
+{% block content %}
+
+<h1>Booking Agents</h1>
+
+<div>
+    <h3>Top 5 Sales in the Past Month: </h3>
+    {% for line in s %}
+	    <h6>{{line.0}}</h6>
+	{% endfor %}
+
+    <h3>Top 5 Sales in the Past Year: </h3>
+    {% for line in y %}
+	    <h6>{{line.0}}</h6>
+	{% endfor %}
+
+    <h3>Top 5 Commission in the Last Year: </h3>
+    {% for line in c %}
+	    <h6>{{line.0}}</h6>
+	{% endfor %}
+    
+    <h3>List of All Agents: </h3>
+    {% for line in t %}
+	    <h6>{{line.0}}</h6>
+	{% endfor %}
+
+</div>
+{% endblock %}
